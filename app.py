@@ -2,11 +2,14 @@ import os
 import gradio as gr
 from models import infere_speech_emotion, infere_text_emotion, infere_voice2text
 
+# Create a Gradio app object
 with gr.Blocks() as demo:
+    # HTML titles
     gr.HTML('''
         <h1 style="text-align:center;">Speech and Text Emotion Recognition</h1>
         <h2 style="text-align:center;">Determining someone's emotions can be challenging based solely on their tone or words <br> This app uses both to provide a more accurate analysis of emotional expression in a single audio recording</h2>
         ''')
+    # Input and output fields
     with gr.Row():
         input = gr.Audio(label="Audio File", type="filepath")
         with gr.Column():
@@ -15,6 +18,7 @@ with gr.Blocks() as demo:
             output2 = gr.Textbox(label="Text emotion")
     btn = gr.Button("Analyze audio")   
     
+    # Examples to be used as input 
     gr.Examples(
         [ 
             os.path.join(os.path.dirname(__file__), "audio/a_good_dream.wav"),
@@ -24,6 +28,7 @@ with gr.Blocks() as demo:
         label="Examples of cases in which speech and words can convey different"        
     )
     
+    # Input-output logic based on button click
     btn.click(fn=infere_voice2text, inputs=input, outputs=output0)
     btn.click(fn=infere_speech_emotion, inputs=input, outputs=output1)
     output0.change(fn=infere_text_emotion, inputs=output0, outputs=output2)
