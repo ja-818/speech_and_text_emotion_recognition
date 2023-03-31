@@ -25,7 +25,7 @@ with gr.Blocks() as demo:
             os.path.join(os.path.dirname(__file__), "audio/hype_in_ai.wav"),
         ],
         input,
-        label="Examples of cases in which speech and words can convey different"        
+        label="Examples in which speech and words express different emotions:"        
     )
     
     # Input-output logic based on button click
