@@ -29,7 +29,7 @@ with gr.Blocks() as demo:
     # Record audio input and output fields
     with gr.Tab("Record audio"):   
         with gr.Row():
-            record_input = gr.Audio(label="Audio recording", type="microphone")
+            record_input = gr.Audio(label="Audio recording", source="microphone")
             with gr.Column():
                 record_output_1 = gr.Textbox(label="Text from the audio")
                 record_output_2 = gr.Textbox(label="Speech emotion")
