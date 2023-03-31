@@ -15,7 +15,7 @@ with gr.Blocks() as demo:
     # Upload audio input and output fields
     with gr.Tab("Upload audio"):
         with gr.Row():
-            upload_input = gr.Audio(label="Audio File", source="upload")
+            upload_input = gr.Audio(label="Audio file", source="upload", type="filepath")
             with gr.Column():
                 upload_output_1 = gr.Textbox(label="Text from the audio")
                 upload_output_2 = gr.Textbox(label="Speech emotion")
@@ -29,7 +29,7 @@ with gr.Blocks() as demo:
     # Record audio input and output fields
     with gr.Tab("Record audio"):   
         with gr.Row():
-            record_input = gr.Audio(label="Audio recording", source="microphone")
+            record_input = gr.Audio(label="Audio recording", source="microphone", type="filepath")
             with gr.Column():
                 record_output_1 = gr.Textbox(label="Text from the audio")
                 record_output_2 = gr.Textbox(label="Speech emotion")
