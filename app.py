@@ -21,6 +21,15 @@ with gr.Blocks() as demo:
                 upload_output_2 = gr.Textbox(label="Speech emotion")
                 upload_output_3 = gr.Textbox(label="Text emotion")
         btn0 = gr.Button("Analyze audio")
+        # Examples to be used as input 
+        gr.Examples(
+            [ 
+                os.path.join(os.path.dirname(__file__), "audio/a_good_dream.wav"),
+                os.path.join(os.path.dirname(__file__), "audio/hype_in_ai.wav"),
+            ],
+            upload_input,
+            label="Examples in which speech and words express different emotions:"        
+        )
     # Input-output logic based on button click
     btn0.click(fn=infere_voice2text, inputs=upload_input, outputs=upload_output_1)
     btn0.click(fn=infere_speech_emotion, inputs=upload_input, outputs=upload_output_2)
@@ -39,17 +48,5 @@ with gr.Blocks() as demo:
     btn1.click(fn=infere_voice2text, inputs=record_input, outputs=record_output_1)
     btn1.click(fn=infere_speech_emotion, inputs=record_input, outputs=record_output_2)
     record_output_1.change(fn=infere_text_emotion, inputs=record_output_1, outputs=record_output_3)
-    
-    # Examples to be used as input 
-    gr.Examples(
-        [ 
-            os.path.join(os.path.dirname(__file__), "audio/a_good_dream.wav"),
-            os.path.join(os.path.dirname(__file__), "audio/hype_in_ai.wav"),
-        ],
-        upload_input,
-        label="Examples in which speech and words express different emotions:"        
-    )
-    
-
 
 demo.launch()
